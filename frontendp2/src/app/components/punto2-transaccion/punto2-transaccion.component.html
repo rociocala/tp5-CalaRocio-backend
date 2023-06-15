@@ -1,0 +1,34 @@
+<div class="card mx-auto m-4" style="width: 550px;">
+  <form class="m-3 p-3 ">
+    <div class="mb-3">
+      <label for="nombreid" class="form-label"> Cantidad: </label>
+      <input type="number" class="form-control" id="nombreid" name="cantidadOrigen" [(ngModel)]="transaccion.cantidadOrigen" aria-describedby="nombreHelp">
+    </div>
+    <div class="mb-3">
+      <label for="Select" class="form-label"> De: </label>
+      <select class="form-select form-select-sm " name="monedaOrigen" [(ngModel)]="transaccion.monedaOrigen" aria-label=".form-select-sm example">
+        <option *ngFor="let div of resultado2" value="{{div.symbol}}" >{{div.symbol}}--{{div.name}}</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="Select" class="form-label"> A: </label>
+      <select class="form-select form-select-sm" name="monedaDestino" [(ngModel)]="transaccion.monedaDestino" aria-label=".form-select-sm example">
+        <option *ngFor="let div of resultado2" value="{{div.symbol}}" >{{div.symbol}}--{{div.name}}</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="stockid" class="form-label">Email:</label>
+      <input type="email" class="form-control" id="emailid" name="emailCliente" [(ngModel)]="transaccion.emailCliente" aria-describedby="stockHelp">
+    </div>
+    <div class="mb-3">
+      <label for="stockid" class="form-label">Conversion:</label>
+      <input name="cantidadDestino" [(ngModel)]="transaccion.cantidadDestino" >
+    </div>
+    <div class="mb-3">
+      <label for="conversionoid" class="form-label">Tasa de Conservion:</label> {{tasaConversiones}}
+    </div>
+
+    <button type="submit" class="btn btn-primary" (click)="mostrarTasaConversion()">Conversion:</button>
+    <button *ngIf="aparecer==true" type="submit" class="btn btn-primary" (click)="guardarConversion()">Guardar Transaccion</button>
+  </form>
+</div>

@@ -1,0 +1,71 @@
+<div class="input-group mb-3">
+  <label class="input-group-text" for="inputGroupSelect01">Options</label>
+  <select class="form-select" id="inputGroupSelect01">
+    <option selected>Choose...</option>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+  </select>
+</div>
+<table class="table" *ngIf="aparecer==true" >
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">EMAIL</th>
+      <th scope="col">MONEDA ORIGEN</th>
+      <th scope="col">CANTIDAD ORIGEN</th>
+      <th scope="col">MONEDA DESTINO</th>
+      <th scope="col">CANTIDAD DESTINO</th>
+      <th scope="col">TASA DE CONSEVERSION</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let datos of divisa">
+      <th scope="row"></th>
+      <td>{{datos.emailCliente}}</td>
+      <td>{{datos.monedaOrigen}}</td>
+      <td>{{datos.cantidadOrigen}}</td>
+      <td>{{datos.monedaDestino}}</td>
+      <td>{{datos.cantidadDestino}}</td>
+      <td>{{datos.tasaConversion}}</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<div class="input-group mb-3">
+  <span class="input-group-text">Moneda Inical</span>
+  <input type="text" class="form-control" name="monedaOrigen" [(ngModel)]="monedaOrigen" placeholder="Ingrese moneda Inicial" aria-label="Ingrese moneda Inicial">
+  <span class="input-group-text">Moneda Final</span>
+  <input type="text" class="form-control" name="monedaDestino"[(ngModel)]="monedaDestino" placeholder="Ingrese moneda Final" aria-label="Ingrese moneda Final">
+  <button type="submit" class="btn btn-primary" (click)="ObtenerFiltroTransacciones()">Filtrar</button>
+</div>
+
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">EMAIL</th>
+      <th scope="col">MONEDA ORIGEN</th>
+      <th scope="col">CANTIDAD ORIGEN</th>
+      <th scope="col">MONEDA DESTINO</th>
+      <th scope="col">CANTIDAD DESTINO</th>
+      <th scope="col">TASA DE CONSEVERSION</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let datos of filtroTransaccion">
+      <th scope="row"></th>
+      <td>{{datos.emailCliente}}</td>
+      <td>{{datos.monedaOrigen}}</td>
+      <td>{{datos.cantidadOrigen}}</td>
+      <td>{{datos.monedaDestino}}</td>
+      <td>{{datos.cantidadDestino}}</td>
+      <td>{{datos.tasaConversion}}</td>
+    </tr>
+  </tbody>
+</table>

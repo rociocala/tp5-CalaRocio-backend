@@ -1,0 +1,39 @@
+
+  <div class="container-fluid bg-warning-subtle p-4">
+    <button class="btn btn-secondary " id="buttom1" type="submit" (click)="agregarProductos()">AGREGAR PRODUCTO</button>
+    <span>PRODUCTOS</span>
+  </div>
+
+<div class="container-fluid bg-light">
+  <div class="row d-flex justify-content-center p-4 gap-3">
+    <div class="card col-md-3 col-sm-3 col-12 p-3"  id="card"  *ngFor="let item of produ">
+      <img [src]="item.imagen" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{item.nombre}}</h5>
+        <p class="card-text">{{item.descripcion}}</p>
+        <button type="button" class="btn btn-info">${{item.precio}}</button>
+        <button class="btn btn-success " id="buttom1" type="submit" (click)="modificarProductos(item)">MODIFICAR PRODUCTO</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid bg-warning-subtle p-4 text-center">
+  <span>PRODUCTOS DESTACADOS</span>
+</div>
+
+<div class="container-fluid bg-light">
+  <div class="row d-flex justify-content-center p-4 gap-3">
+    <div class="card col-md-3 col-sm-3 col-12 p-3"  id="card"  *ngFor="let item of productosDestacados">
+      <img [src]="item.imagen" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{item.nombre}}</h5>
+        <p class="card-text">{{item.descripcion}}</p>
+        <button type="button" class="btn btn-info">${{item.precio}}</button>
+        <button class="btn btn-success " id="buttom1" type="submit" (click)="modificarProductos(item)">MODIFICAR PRODUCTO</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
