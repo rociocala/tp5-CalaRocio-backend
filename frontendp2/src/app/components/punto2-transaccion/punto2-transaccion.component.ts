@@ -1,3 +1,4 @@
+import { CurrencyPipe } from '@angular/common';
 import { Transaccion } from './../../models/transaccion';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
@@ -34,7 +35,7 @@ export class Punto2TransaccionComponent {
 
     this.apiService.getConvertir(this.transaccion.cantidadOrigen,this.transaccion.monedaOrigen,this.transaccion.monedaDestino).subscribe(
       (result)=>{
-        this.transaccion.tasaConversion=result.result.convertedAmount;;
+        this.transaccion.tasaConversion =result.result.convertedAmount;;
         this.tasaConversiones =  this.transaccion.cantidadOrigen +" "+ this.transaccion.monedaOrigen + " equivale a "+ this.transaccion.tasaConversion + " "+ this.transaccion.monedaDestino;
         console.log(this.transaccion.cantidadDestino);
       },
@@ -100,8 +101,8 @@ export class Punto2TransaccionComponent {
     this.apiService.createTransaccion(this.transaccion).subscribe(
       result=>{
         if(result.status == 1){
-          alert(result.msg);
           this.router.navigate(["punto2-transaccion-form",0])
+          alert(result.msg);
         }
       },
       error=>{

@@ -13,6 +13,7 @@ import { Punto2TransaccionComponent } from './components/punto2-transaccion/punt
 import { Punto2TransaccionFormComponent } from './components/punto2-transaccion-form/punto2-transaccion-form.component';
 import { Punto3TicketComponent } from './components/punto3-ticket/punto3-ticket.component';
 import { Punto3TicketFormComponent } from './components/punto3-ticket-form/punto3-ticket-form.component';
+import { CurrencyPipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { Punto3TicketFormComponent } from './components/punto3-ticket-form/punto
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CurrencyPipe
   ],
   providers: [],
   bootstrap: [AppComponent]

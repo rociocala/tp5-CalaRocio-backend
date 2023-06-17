@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Transaccion } from 'src/app/models/transaccion';
 import { TransaccionService } from 'src/app/services/transaccion.service';
 
@@ -16,7 +17,7 @@ export class Punto2TransaccionFormComponent {
 
   aparecer:string="mostrar1";
 
-  constructor(private apiService: TransaccionService) {
+  constructor(private apiService: TransaccionService,private router:Router) {
      this.divisa = new Array<Transaccion>();
      this.divisaFiltro = new Array<Transaccion>();
 
@@ -72,5 +73,9 @@ export class Punto2TransaccionFormComponent {
         alert("Error");
       }
     )
+  }
+
+  agregarTransaccion(){
+    this.router.navigate(["punto2-transaccion"])
   }
 }
