@@ -9,20 +9,23 @@ import { TransaccionService } from 'src/app/services/transaccion.service';
 })
 export class Punto2TransaccionFormComponent {
   divisa: Array<Transaccion>;
-  filtroTransaccion: Array<Transaccion>;
+  resultado2!:any;
+  divisaFiltro!:Array<Transaccion>;
   monedaOrigen!:string;
   monedaDestino!:string;
 
-  aparecer!:Boolean;
+  aparecer:string="mostrar1";
 
   constructor(private apiService: TransaccionService) {
      this.divisa = new Array<Transaccion>();
-     this.filtroTransaccion = new Array<Transaccion>();
+     this.divisaFiltro = new Array<Transaccion>();
+
      this.obtenerTransacciones();
+     this.mostrarDivisas2();
   }
 
   obtenerTransacciones(){
-    this.aparecer=true;
+    this.aparecer="mostrar1";
     this.apiService.getTransacciones().subscribe(
       result => {
         console.log(result)
@@ -41,15 +44,16 @@ export class Punto2TransaccionFormComponent {
   //arreglar filtro
 
   ObtenerFiltroTransacciones(){
-    this.divisa = new Array<Transaccion>();
+    //his.aparecer=false;
+    this.divisaFiltro = new Array<Transaccion>();
     this.apiService.getDivisas(this.monedaOrigen,this.monedaDestino).subscribe(
       result => {
          let unaTransaccion = new Transaccion();
          result.forEach((element: any) => {
          Object.assign(unaTransaccion, element);
-        this.filtroTransaccion.push(unaTransaccion);
+        this.divisaFiltro.push(unaTransaccion);
         unaTransaccion = new Transaccion();
-        console.log(this.filtroTransaccion);
+        console.log(this.divisaFiltro);
         });
       },
       error =>{
@@ -58,6 +62,15 @@ export class Punto2TransaccionFormComponent {
     )
   }
 
-
-
+  mostrarDivisas2(){
+    this.apiService.getConvertir2().subscribe(
+      (result)=>{ // devuelve un arreglo
+        this.resultado2=result;
+        console.log(this.resultado2);
+      },
+      error => {
+        alert("Error");
+      }
+    )
+  }
 }

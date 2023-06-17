@@ -26,8 +26,12 @@ ticketCtrl.createTicket = async (req, res) => {
 
 // get- recuperar los ticket segun sea espectadores o locales
 ticketCtrl.getEspectadorTicket = async (req, res) => {
-    const ticketCat = await Ticket.find({categoriaEspectador : req.params.categoriaEspectador}).populate("espectador");
-    res.json(ticketCat);
+    let criteria ={}
+    if (req.query.categoriaE != null && req.query.categoriaE!=""){
+        criteria.categoriaEspectador = req.query.categoriaE;
+    }
+    var ticket = await Ticket.find(criteria).populate("espectador");
+    res.json(ticket);
 }
 
 //put-modificar
@@ -61,5 +65,11 @@ ticketCtrl.deleteTicket = async (req, res) => {
             'msg': 'Error procesando la operacion'
         })
     }
+}
+
+ticketCtrl.getTicket = async (req, res) => {    //req= es la solcitud q viene del fronted(parametros ,header,body)
+    var ticket = await Ticket.findById(req.params.id).populate("espectador");
+    res.json(ticket);
+ 
 }
 module.exports = ticketCtrl;

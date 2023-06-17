@@ -14,7 +14,7 @@
           </a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" [routerLink]="['punto1-producto']" >PRINCIPAL</a></li>
-            <li><a class="dropdown-item"  [routerLink]="['punto1-producto-form/0']" >AGREGAR</a></li>
+            <li><a class="dropdown-item"  [routerLink]="['punto1-producto-form/0']" >AGREGAR PRODUCTO</a></li>
           </ul>
         </li>
 
@@ -23,8 +23,18 @@
             TRANSACCION
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" [routerLink]="['punto2-transaccion']" >PRINCIPAL</a></li>
-            <li><a class="dropdown-item"  [routerLink]="['punto2-transaccion-form/0']" >AGREGAR</a></li>
+            <li><a class="dropdown-item" [routerLink]="['punto2-transaccion']" >AGREGAR TRANSACCION</a></li>
+            <li><a class="dropdown-item"  [routerLink]="['punto2-transaccion-form/0']" >FILTRO DE TRANSACCIONES</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            TICKETS
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" [routerLink]="['punto3-ticket']" >LISTA DE TICKETS</a></li>
+            <li><a class="dropdown-item"  [routerLink]="['punto3-ticket-form/0']" >AGREGAR TICKETS</a></li>
           </ul>
         </li>
       </ul>

@@ -1,1 +1,46 @@
-<p>punto3-ticket works!</p>
+<div class="container-fluid bg-info-subtle p-2">
+  <h3 class="col-12 text-center text-dark ">LISTA DE TICKETS</h3>
+</div>
+
+
+<div class="container">
+<div class="input-group mb-3 p-5" id="seleccion">
+  <span class="input-group-text">FILTROS</span>
+  <select class="form-select" aria-label="Default select example" [(ngModel)]="categoriaEspectador" (ngModelChange)="tipoDeEspectador()">
+    <option value="">TODA LA LISTA</option>
+    <option value="local">ESPECTADOR TIPO LOCAL</option>
+    <option value="extranjero">ESPECTADOR TIPO EXTRAJERO</option>
+  </select>
+  <button class="btn btn-primary" (click)="agregarTicket()">AGREGAR TICKETS</button>
+</div>
+</div>
+
+
+
+<div class="table-responsive d-flex justify-content-center">
+  <table class="table table-striped table table-bordered border-dark text-center ">
+    <thead class="table-warning">
+      <tr>
+        <th style="width: 15%"> id </th>
+        <th style="width: 15%"> precio del ticket </th>
+        <th style="width: 15%"> fecha de compra</th>
+        <th style="width: 15%"> Tipo del ticket</th>
+        <th style="width: 15%"> espectador</th>
+        <th style="width: 15%"> </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let datos of tickets">
+        <td>{{datos._id}}</td>
+        <td>$ {{datos.precioTicket}}</td>
+        <td>{{datos.fechaCompra}}</td>
+        <td>{{datos.categoriaEspectador}}</td>
+        <td>{{datos.espectador.nombre}},{{datos.espectador.apellido}}</td>
+        <td>
+          <button class="btn btn-success" (click)=" modificarTicket(datos)">MOD</button>
+          <button class="btn btn-danger" (click)=" borrarTicket(datos)">BORRAR</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

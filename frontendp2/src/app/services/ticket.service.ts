@@ -48,10 +48,11 @@ export class TicketService {
         }
       ),
       params: new HttpParams()
+      .append('categoriaE',categoria)
 
     }
 
-    return this._http.get(this.apiUrl+categoria,httpOptions);
+    return this._http.get(this.apiUrl+"categoria",httpOptions);
   }
 
   editTicket(ticket:Ticket):Observable<any>{
@@ -82,5 +83,18 @@ export class TicketService {
     return this._http.delete(this.apiUrl+id,httpOptions);
   }
 
+  getTicket(id:string):Observable<any>{
+    let httpOptions={
+      headers: new HttpHeaders(
+        {
+
+        }
+      ),
+      params: new HttpParams()
+
+    }
+
+    return this._http.get(this.apiUrl+id,httpOptions);
+  }
 
 }

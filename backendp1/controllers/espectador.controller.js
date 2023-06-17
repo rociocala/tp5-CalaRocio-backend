@@ -2,7 +2,7 @@ const Espectador = require('../models/espectador');
 
 //get - buscar todos los espectadores
 const espectadorCtrl = {}
-espectadorCtrl.getEspectadores = async (req, res) => {    //req= es la solcitud q viene del fronted(parametros ,header,body)
+espectadorCtrl.getEspectadores = async (req, res) => {    //req= es la solcitud que viene del fronted(parametros ,header,body)
     var espectadores = await Espectador.find();
     res.json(espectadores);
 }
@@ -12,7 +12,7 @@ espectadorCtrl.createEspectador = async (req, res) => {
     var espectador = new Espectador(req.body);
     try {
         await espectador.save();
-        res.status(200).json({// status(200) para q sea explicito,aunq si no lo pongo ya de por si toma el 200
+        res.status(200).json({// status(200) para q sea explicito,si no esta de igual manera toma el 200
             'status': '1',
             'msg': 'Espectador guardado.'
         })

@@ -1,4 +1,4 @@
-<div class="card mx-auto m-4" style="width: 550px;">
+<div class="card mx-auto m-4" style="width: 550px; background-color: rgb(233, 233, 157);">
   <form class="m-3 p-3 ">
     <div class="mb-3">
       <label for="nombreid" class="form-label"> Cantidad: </label>
@@ -7,13 +7,13 @@
     <div class="mb-3">
       <label for="Select" class="form-label"> De: </label>
       <select class="form-select form-select-sm " name="monedaOrigen" [(ngModel)]="transaccion.monedaOrigen" aria-label=".form-select-sm example">
-        <option *ngFor="let div of resultado2" value="{{div.symbol}}" >{{div.symbol}}--{{div.name}}</option>
+        <option *ngFor="let div of resultado2" value="{{div.symbol}}" >{{div.symbol}} de {{div.name}}</option>
       </select>
     </div>
     <div class="mb-3">
       <label for="Select" class="form-label"> A: </label>
       <select class="form-select form-select-sm" name="monedaDestino" [(ngModel)]="transaccion.monedaDestino" aria-label=".form-select-sm example">
-        <option *ngFor="let div of resultado2" value="{{div.symbol}}" >{{div.symbol}}--{{div.name}}</option>
+        <option *ngFor="let div of resultado2" value="{{div.symbol}}" >{{div.symbol}} de {{div.name}}</option>
       </select>
     </div>
     <div class="mb-3">
@@ -22,7 +22,7 @@
     </div>
     <div class="mb-3">
       <label for="stockid" class="form-label">Conversion:</label>
-      <input name="cantidadDestino" [(ngModel)]="transaccion.cantidadDestino" >
+      <h5 name="cantidadDestino" [(ngModel)]="transaccion.cantidadDestino" >{{transaccion.cantidadDestino | currency}}</h5>
     </div>
     <div class="mb-3">
       <label for="conversionoid" class="form-label">Tasa de Conservion:</label> {{tasaConversiones}}

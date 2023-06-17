@@ -41,10 +41,10 @@ export class Punto1ProductoComponent {
     this.api.getProductosDestacados().subscribe(
       result=>{
         console.log(result)
-        let unProducto:Producto = new Producto(); //
-        result.forEach((element:any) => { //element= agarra el elemento 1 ,despues el 2 y asi
-          Object.assign(unProducto,element)// agarra target y surs = al destino le asigna la variable fuente- Un producto recibe Elements de la api
-          this.productosDestacados.push(unProducto) //
+        let unProducto:Producto = new Producto();
+        result.forEach((element:any) => {
+          Object.assign(unProducto,element)
+          this.productosDestacados.push(unProducto)
           unProducto = new Producto();
         });
       },

@@ -4,6 +4,6 @@ export class Ticket {
   _id!:string
   precioTicket!: number;
   categoriaEspectador!: string;
-  fechaCompra!: number;
+  fechaCompra!: string;
   espectador!:Espectador;
 }

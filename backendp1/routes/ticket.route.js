@@ -8,7 +8,8 @@ const router = express.Router();
 //definimos las rutas para la gestion de agente
 router.get('/', ticketCtrl.getTickets); // http://localhost:3000/api/ticket/
 router.post('/', ticketCtrl.createTicket);
-router.get('/:categoriaEspectador', ticketCtrl.getEspectadorTicket);
+router.get('/categoria', ticketCtrl.getEspectadorTicket);
+router.get('/:id', ticketCtrl.getTicket);
 router.put('/:id', ticketCtrl.editTicket);
 router.delete('/:id', ticketCtrl.deleteTicket);
 //exportamos el modulo de rutas

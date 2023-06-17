@@ -7,8 +7,8 @@ const router = express.Router();
 
 //definimos las rutas para la gestion de agente
 router.get('/', productoCtrl.getProductos); // http://localhost:3000/api/producto/
-router.post('/', productoCtrl.createProducto);
 router.get('/destacado', productoCtrl.getProdu);
+router.post('/', productoCtrl.createProducto);
 router.put('/:id', productoCtrl.editProducto);
 router.delete('/:id', productoCtrl.deleteProducto);
 router.get('/:id', productoCtrl.getProducto);

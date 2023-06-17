@@ -63,6 +63,20 @@ export class ProductoService {
     let body = JSON.stringify(producto);
     return this.api.post(this.apiUrl,body,httpOption)
   }
+  editProducto(producto:Producto):Observable<any>{
+    let httpOptions={
+      headers: new HttpHeaders(
+        {
+          "Content-type": "application/json"
+        }
+      ),
+      params: new HttpParams()
+    }
+
+    let body = JSON.stringify(producto);
+
+    return this.api.put(this.apiUrl+producto._id,body,httpOptions);
+  }
 
 
 }

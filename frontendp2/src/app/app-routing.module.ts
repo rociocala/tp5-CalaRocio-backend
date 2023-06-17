@@ -6,6 +6,8 @@ import { Punto1ProductoFormComponent } from './components/punto1-producto-form/p
 import { Punto1ProductoComponent } from './components/punto1-producto/punto1-producto.component';
 import { Punto2TransaccionComponent } from './components/punto2-transaccion/punto2-transaccion.component';
 import { Punto2TransaccionFormComponent } from './components/punto2-transaccion-form/punto2-transaccion-form.component';
+import { Punto3TicketFormComponent } from './components/punto3-ticket-form/punto3-ticket-form.component';
+import { Punto3TicketComponent } from './components/punto3-ticket/punto3-ticket.component';
 
 const routes: Routes = [
   { path: 'header', component: HeaderComponent },
@@ -14,6 +16,8 @@ const routes: Routes = [
   { path: 'punto1-producto-form/:id', component: Punto1ProductoFormComponent},
   { path: 'punto2-transaccion', component: Punto2TransaccionComponent },
   { path: 'punto2-transaccion-form/:id', component: Punto2TransaccionFormComponent},
+  { path: 'punto3-ticket', component: Punto3TicketComponent},
+  { path: 'punto3-ticket-form/:id', component: Punto3TicketFormComponent},
   {path:'', redirectTo:'/punto1-producto', pathMatch:"full"}
 ];
 

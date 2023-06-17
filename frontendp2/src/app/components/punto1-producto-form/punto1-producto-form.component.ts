@@ -51,7 +51,19 @@ export class Punto1ProductoFormComponent implements OnInit{
     this.router.navigate(["punto1-producto"])
   }
 
-  actualizarProducto(){
-    this.router.navigate(["punto1-producto"])
-  }
+
+  modificarProducto(){
+    this.api.editProducto(this.producto).subscribe(
+     result=>{
+       if(result.status == 1){
+         alert(result.msg);
+       }
+       this.router.navigate(["punto1-producto"])
+     },
+     error=>{
+       alert(error.msg);
+     }
+   )
+ }
+
 }
