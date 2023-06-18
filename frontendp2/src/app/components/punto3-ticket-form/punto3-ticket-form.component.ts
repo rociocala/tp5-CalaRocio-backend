@@ -98,5 +98,9 @@ export class Punto3TicketFormComponent implements OnInit{
     )
   }
 
+  volverAtras(){
+    this.router.navigate(["punto3-ticket"])
+  }
+
 
 }

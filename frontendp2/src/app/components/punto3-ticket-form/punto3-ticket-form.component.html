@@ -6,7 +6,7 @@
     </div>
     <!--<div class="mb-3">
       <label for="Select" class="form-label fw-bold"> Categoria Espectador: </label><label name="categoriaEspectador" [(ngModel)]="ticket.categoriaEspectador" >{{ticket.categoriaEspectador}}</label>
-      <select class="form-select form-select-sm" name="espectador" [(ngModel)]="ticket.categoriaEspectador" aria-label=".form-select-sm example">
+      <select class="form-select form-select-sm" name="categoriaEspectador" [(ngModel)]="ticket.categoriaEspectador" aria-label=".form-select-sm example">
         <option  [value]="local" >local</option>
         <option  [value]="extranjero" >extranjero</option>
       </select>
@@ -26,7 +26,7 @@
 
     <div class="mb-3">
       <label for="stockid" class="form-label fw-bold">Fecha de Compra:</label>
-      <input name="fechaCompra" [(ngModel)]="ticket.fechaCompra" >
+      <input name="fechaCompra" [(ngModel)]="ticket.fechaCompra" disabled >
     </div>
 
     <div class="mb-3">
@@ -36,8 +36,9 @@
         <option *ngFor="let div of espectador" [ngValue]="div" >{{div.nombre}},{{div.apellido}}</option>
       </select>
     </div>
-    <button type="submit" class="btn btn-primary text-center m-2" style="width: 400px;" *ngIf="this.accion == 'new'" (click)="guardarTicket()">Guardar</button>
-    <button  type="submit" class="btn btn-primary" *ngIf="this.accion == 'update'" (click)="modificarTicket()">Modificar</button>
+    <button type="submit" class="btn btn-primary text-center w-50" *ngIf="this.accion == 'new'" (click)="guardarTicket()">Guardar</button>
+    <button  type="submit" class="btn btn-success  w-50" *ngIf="this.accion == 'update'" (click)="modificarTicket()">Modificar</button>
+    <button  type="submit" class="btn btn-danger w-50" (click)="volverAtras()">Volver a Lista</button>
 
   </form>
 </div>
