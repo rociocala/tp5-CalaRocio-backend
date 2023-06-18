@@ -1,30 +1,30 @@
-<div class="card mx-auto m-4" style="width: 500px;">
-  <form class="m-3 p-3 text-center">
+<div class="card mx-auto m-4" id="form">
+  <form class="m-3 p-3 ">
     <div class="mb-3">
-      <label for="nombreid" class="form-label">Nombre</label>
-      <input type="text" class="form-control" id="nombreid" name="nombre" [(ngModel)]="producto.nombre" aria-describedby="nombreHelp">
+      <label for="nombreid" class="form-label text-light">Nombre:</label>
+      <input placeholder="Ingrese la nombre del producto" type="text" class="form-control" id="nombreid" name="nombre" [(ngModel)]="producto.nombre" aria-describedby="nombreHelp">
     </div>
     <div class="mb-3">
-      <label for="descripcionid" class="form-label">Descripción</label>
-      <input type="text" class="form-control" id="descripcionid" name="descripcion" [(ngModel)]="producto.descripcion" aria-describedby="descripcion">
+      <label for="descripcionid" class="form-label text-light">Descripción:</label>
+      <input  placeholder="Ingrese la descripcion del producto"type="text" class="form-control" id="descripcionid" name="descripcion" [(ngModel)]="producto.descripcion" aria-describedby="descripcion">
     </div>
     <div class="mb-3">
-      <label for="imagenid" class="form-label">Imagen</label>
-      <input type="text" class="form-control" id="imagenid" name="imagen" [(ngModel)]="producto.imagen" aria-describedby="imagenHelp">
+      <label for="imagenid" class="form-label text-light">Imagen:</label>
+      <input placeholder="Ingrese URL de la imagen" type="text" class="form-control" id="imagenid" name="imagen" [(ngModel)]="producto.imagen" aria-describedby="imagenHelp">
     </div>
     <div class="mb-3">
-      <label for="precioid" class="form-label">Precio</label>
-      <input type="number" class="form-control" id="precioid" name="precio" [(ngModel)]="producto.precio" aria-describedby="precioHelp">
+      <label for="precioid" class="form-label text-light">Precio:</label>
+      <input placeholder="Ingrese Precio del producto" type="number" class="form-control" id="precioid" name="precio" [(ngModel)]="producto.precio" aria-describedby="precioHelp">
     </div>
     <div class="mb-3">
-      <label for="stockid" class="form-label">Stock</label>
-      <input type="number" class="form-control" id="stockid" name="stock" [(ngModel)]="producto.stock" aria-describedby="stockHelp">
+      <label for="stockid" class="form-label text-light">Stock:</label>
+      <input placeholder="Ingrese el stock del producto" type="number" class="form-control" id="stockid" name="stock" [(ngModel)]="producto.stock" aria-describedby="stockHelp">
     </div>
     <div class="mb-3 form-check">
       <input type="checkbox" class="form-check-input" id="exampleCheck1" name="destacado" [(ngModel)]="producto.destacado">
-      <label class="form-check-label" for="exampleCheck1">¿Destacado?</label>
+      <label class="form-check-label text-light" for="exampleCheck1">¿Destacado?</label>
     </div>
-    <button type="submit" class="btn btn-primary" *ngIf="accion=='new'" (click)="guardarProducto()">Guardar</button>
+    <button type="submit" class="btn btn-primary" style="width: 330px;" *ngIf="accion=='new'" (click)="guardarProducto()">Guardar</button>
     <button type="submit" class="btn btn-primary" *ngIf="accion=='update'"(click)="modificarProducto()">Actualizar</button>
   </form>
 </div>
