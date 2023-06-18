@@ -73,13 +73,13 @@ export class Punto3TicketFormComponent implements OnInit{
       result=>{
         if(result.status == 1){
          // alert(result.msg);
+         this.router.navigate(["punto3-ticket"])
         }
       },
       error=>{
         alert(error.msg);
       }
     )
-    this.router.navigate(["punto3-ticket"])
   }
 
   modificarTicket(){
