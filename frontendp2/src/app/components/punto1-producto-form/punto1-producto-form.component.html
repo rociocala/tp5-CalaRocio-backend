@@ -1,5 +1,5 @@
 <div class="card mx-auto m-4" id="form">
-  <form class="m-3 p-3 ">
+  <form class="m-3 p-3 " #transaccionForm="ngForm">
     <div class="mb-3">
       <label for="nombreid" class="form-label text-light">Nombre:</label>
       <input required #nombre="ngModel" placeholder="Ingrese la nombre del producto" type="text" class="form-control" id="nombreid" name="nombre" [(ngModel)]="producto.nombre" aria-describedby="nombreHelp">
@@ -39,9 +39,7 @@
       <input type="checkbox" class="form-check-input" id="exampleCheck1" name="destacado"[(ngModel)]="producto.destacado">
       <label class="form-check-label text-light" for="exampleCheck1">¿Destacado?</label>
     </div>
-    <button type="submit" class="btn btn-primary" style="width: 330px;" *ngIf="accion=='new'"
-      (click)="guardarProducto()">Guardar</button>
-    <button type="submit" class="btn btn-primary" *ngIf="accion=='update'"
-      (click)="modificarProducto()">Actualizar</button>
+    <button type="submit" class="btn btn-primary"  style="width: 330px;" *ngIf="accion=='new'" [disabled]="transaccionForm.invalid" (click)="guardarProducto()">Guardar</button>
+    <button type="submit" class="btn btn-primary"  style="width: 330px;" *ngIf="accion=='update'" [disabled]="transaccionForm.invalid"  (click)="modificarProducto()">Actualizar</button>
   </form>
 </div>

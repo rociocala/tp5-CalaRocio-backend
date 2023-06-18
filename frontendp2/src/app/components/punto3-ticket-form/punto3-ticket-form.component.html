@@ -1,8 +1,11 @@
 <div class="card mx-auto m-4" style="width: 500px; background-color: rgb(160, 225, 178);">
-  <form class="m-4 p-3 ">
+  <form class="m-4 p-3" #transaccionForm="ngForm">
     <div class="mb-3">
       <label for="nombreid" class="form-label fw-bold"> Precio:  </label>
-      <input type="number" class="form-control"name="precioTicket" [(ngModel)]="ticket.precioTicket" placeholder="Ingrese el precio" aria-describedby="nombreHelp">
+      <input required #precio="ngModel"  type="number" class="form-control"name="precioTicket" [(ngModel)]="ticket.precioTicket" placeholder="Ingrese el precio" aria-describedby="nombreHelp">
+      <div *ngIf="precio.invalid && (precio.dirty || precio.touched)" class="alert alert-danger">
+        <div *ngIf="precio.errors?.['required']"> Numero de precio es requerido. </div>
+      </div>
     </div>
     <!--<div class="mb-3">
       <label for="Select" class="form-label fw-bold"> Categoria Espectador: </label><label name="categoriaEspectador" [(ngModel)]="ticket.categoriaEspectador" >{{ticket.categoriaEspectador}}</label>
@@ -11,17 +14,20 @@
         <option  [value]="extranjero" >extranjero</option>
       </select>
     </div>!-->
-    <div class="form-check">
-      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="local" [(ngModel)]="ticket.categoriaEspectador">
-      <label class="form-check-label" for="flexRadioDefault1">
-        Local
-      </label>
-    </div>
-    <div class="form-check">
-      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="extranjero" [(ngModel)]="ticket.categoriaEspectador">
-      <label class="form-check-label" for="flexRadioDefault2">
-        Extranjero
-      </label>
+    <div class="mb-3">
+      <div class="form-check">
+        <input required #categoria="ngModel" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="local" [(ngModel)]="ticket.categoriaEspectador">
+        <label class="form-check-label" for="flexRadioDefault1">
+          Local
+        </label>
+      </div>
+      <div class="form-check">
+        <input required #categoria="ngModel" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="extranjero" [(ngModel)]="ticket.categoriaEspectador">
+        <label class="form-check-label" for="flexRadioDefault2"> Extranjero </label>
+      </div>
+      <div *ngIf="categoria.invalid && (categoria.dirty || categoria.touched)" class="alert alert-danger">
+        <div *ngIf="categoria.errors?.['required']"> Numero de precio es requerido. </div>
+      </div>
     </div>
 
     <div class="mb-3">
@@ -31,13 +37,16 @@
 
     <div class="mb-3">
       <label for="Select" class="form-label fw-bold"> Espectador: </label>
-      <select class="form-select form-select-sm" name="espectador" [(ngModel)]="ticket.espectador" aria-label=".form-select-sm example">
+      <select required #espec="ngModel" class="form-select form-select-sm" name="espectador" [(ngModel)]="ticket.espectador" aria-label=".form-select-sm example">
         <option disabled>Elija Espectador</option>
         <option *ngFor="let div of espectador" [ngValue]="div" >{{div.nombre}},{{div.apellido}}</option>
       </select>
+      <div *ngIf="espec.invalid && (espec.dirty || espec.touched)" class="alert alert-danger">
+        <div *ngIf="espec.errors?.['required']"> Numero de precio es requerido. </div>
+      </div>
     </div>
-    <button type="submit" class="btn btn-primary text-center w-50" *ngIf="this.accion == 'new'" (click)="guardarTicket()">Guardar</button>
-    <button  type="submit" class="btn btn-success  w-50" *ngIf="this.accion == 'update'" (click)="modificarTicket()">Modificar</button>
+    <button type="submit" class="btn btn-primary text-center w-50" [disabled]="transaccionForm.invalid"  *ngIf="this.accion == 'new'" (click)="guardarTicket()">Guardar</button>
+    <button  type="submit" class="btn btn-success  w-50" [disabled]="transaccionForm.invalid" *ngIf="this.accion == 'update'" (click)="modificarTicket()">Modificar</button>
     <button  type="submit" class="btn btn-danger w-50" (click)="volverAtras()">Volver a Lista</button>
 
   </form>

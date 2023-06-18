@@ -1,20 +1,29 @@
 <div class="card mx-auto m-4" id="form">
-  <form class="m-3 p-3 ">
+  <form class="m-3 p-3" #transaccionForm="ngForm">
     <div class="mb-3">
       <label for="nombreid" class="form-label text-light"> Cantidad: </label>
-      <input type="number" class="form-control" id="nombreid" name="cantidadOrigen" [(ngModel)]="transaccion.cantidadOrigen" aria-describedby="nombreHelp">
+      <input required #origen="ngModel" type="number" class="form-control" id="nombreid" name="cantidadOrigen" [(ngModel)]="transaccion.cantidadOrigen" aria-describedby="nombreHelp">
+      <div *ngIf="origen.invalid && (origen.dirty || origen.touched)" class="alert alert-danger">
+        <div *ngIf="origen.errors?.['required']"> La cantidad a evaluar es requerido. </div>
+      </div>
     </div>
     <div class="mb-3">
       <label for="Select" class="form-label text-light"> De: </label>
-      <select class="form-select form-select-sm " name="monedaOrigen" [(ngModel)]="transaccion.monedaOrigen" aria-label=".form-select-sm example">
+      <select required #monedaO="ngModel" class="form-select form-select-sm " name="monedaOrigen" [(ngModel)]="transaccion.monedaOrigen" aria-label=".form-select-sm example">
         <option *ngFor="let div of resultado2" value="{{div.symbol}}" >{{div.symbol}} de {{div.name}}</option>
       </select>
+      <div *ngIf="monedaO.invalid && (monedaO.dirty || monedaO.touched)" class="alert alert-danger">
+        <div *ngIf="monedaO.errors?.['required']"> Requerido elegir </div>
+      </div>
     </div>
     <div class="mb-3">
       <label for="Select" class="form-label text-light"> A: </label>
-      <select class="form-select form-select-sm" name="monedaDestino" [(ngModel)]="transaccion.monedaDestino" aria-label=".form-select-sm example">
+      <select required #monedaD="ngModel" class="form-select form-select-sm" name="monedaDestino" [(ngModel)]="transaccion.monedaDestino" aria-label=".form-select-sm example">
         <option *ngFor="let div of resultado2" value="{{div.symbol}}" >{{div.symbol}} de {{div.name}}</option>
       </select>
+      <div *ngIf="monedaD.invalid && (monedaD.dirty || monedaD.touched)" class="alert alert-danger">
+        <div *ngIf="monedaD.errors?.['required']"> Requerido eligir. </div>
+      </div>
     </div>
     <div class="mb-3">
       <label for="stockid" class="form-label text-light">Email:</label>
@@ -28,7 +37,7 @@
       <label for="conversionoid" class="form-label text-light">Tasa de Conservion:</label> <h6 class=" text-light">{{tasaConversiones}}</h6>
     </div>
 
-    <button type="submit" class="btn btn-primary"  style="width: 330px;" (click)="mostrarTasaConversion()">Conversion:</button><br><br>
+    <button type="submit" class="btn btn-primary"  style="width: 330px;" (click)="mostrarTasaConversion()" [disabled]="transaccionForm.invalid">Conversion:</button><br><br>
     <button *ngIf="aparecer==true" type="submit" class="btn btn-success" style="width: 330px;" (click)="guardarConversion()">Guardar Transaccion</button>
   </form>
 </div>
